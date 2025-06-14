@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath 'com.android.tools.build:gradle:8.10.1'
     }
 }
 
@@ -21,18 +21,24 @@ rootProject.allprojects {
 
 apply plugin: 'com.android.library'
 
+
 android {
-    compileSdkVersion 28
+    compileSdk 35
+    namespace "ru.innim.flutter_login_facebook"
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 
     defaultConfig {
         minSdkVersion 16
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-    lintOptions {
-        disable 'InvalidPackage'
     }
 }
 
 dependencies {
-    implementation 'com.facebook.android:facebook-login:17.0.0'
+    implementation 'com.facebook.android:facebook-login:latest.release'
 }
